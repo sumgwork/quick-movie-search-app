@@ -1,12 +1,19 @@
 import React from "react";
+import Layout from "./components/Layout";
+import MainBody from "./components/MainBody";
+import Sidebar from "./components/Sidebar";
+import GlobalStyles from "./styles/globalStyles";
+import Typography from "./styles/typography";
 
 function App() {
-  console.log("process.env.REACT_APP_OMDB_KEY", process.env.REACT_APP_OMDB_KEY);
-
   return (
-    <div className="App">
-      <p>Hello</p>
-    </div>
+    <>
+      <GlobalStyles />
+      <Typography />
+      <Layout sidebar={<Sidebar />}>
+        <MainBody />
+      </Layout>
+    </>
   );
 }
 
