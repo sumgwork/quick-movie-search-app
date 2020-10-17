@@ -1,24 +1,36 @@
-import React, { useState } from "react";
+import debounce from "lodash.debounce";
+import React, { useCallback, useState } from "react";
 import useSearchMovie from "../hooks/useSearchMovie";
 import PaginationComponent from "./Pagination";
 import SearchResults from "./SearchResults";
 
 const Sidebar = () => {
+  const [value, setValue] = useState("");
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const { searchResults: data, loading, error } = useSearchMovie(
     searchText.trim(),
     page
   );
+
   const handleChange = (e) => {
-    setSearchText(e.target.value);
+    setValue(e.target.value);
+    debounceHandler(e.target.value);
   };
+
+  const debounceHandler = useCallback(
+    debounce((value) => {
+      setSearchText(value);
+    }, 250),
+    []
+  );
+
   return (
     <div>
       <h2>Sidebar</h2>
       <input
         type="text"
-        value={searchText}
+        value={value}
         onChange={handleChange}
         placeholder="Start Search..."
       />
@@ -31,7 +43,7 @@ const Sidebar = () => {
         <div>
           {data.Response === "True" && (
             <>
-              {searchText && (
+              {value && (
                 <div>
                   <SearchResults movies={data.Search} />
                   <PaginationComponent

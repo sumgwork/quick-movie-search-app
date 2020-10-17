@@ -12,7 +12,9 @@ const PaginationComponent = ({ page, changePage, total }) => {
       <button onClick={handleToPrevPage} disabled={page === 1}>
         -
       </button>
-      <div>Page {page}</div>
+      <div>
+        Page {page} of {numPages}
+      </div>
       <button onClick={handleToNextPage} disabled={page === numPages}>
         +
       </button>

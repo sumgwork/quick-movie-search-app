@@ -1,5 +1,5 @@
-const { useState, useEffect } = require("react");
-const { default: httpMovieService } = require("../utils/httpMovieService");
+import { useEffect, useState } from "react";
+import httpMovieService from "../utils/httpMovieService";
 
 const useSearchMovie = (searchText, page = 1) => {
   const [searchResults, setSearchResults] = useState([]);

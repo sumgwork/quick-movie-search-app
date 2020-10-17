@@ -40,11 +40,10 @@ const GlobalStyles = createGlobalStyle`
     border: 0;
     padding: 1rem;
     border-radius: 2px;
-    min-width: 140px;
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
-      background: var(--white);
+      background: var(--black);
     color: var(--primaryBg);
     }
   }
