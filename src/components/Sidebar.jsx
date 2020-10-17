@@ -6,8 +6,8 @@ import SearchResults from "./SearchResults";
 import MovieContext from "../utils/movieContext";
 
 const Sidebar = () => {
-  const [value, setValue] = useState("indian");
-  const [searchText, setSearchText] = useState("indian");
+  const [value, setValue] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const { searchResults: data, loading, error } = useSearchMovie(
     searchText.trim(),

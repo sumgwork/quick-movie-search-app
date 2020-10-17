@@ -15,6 +15,9 @@ const PaginationComponent = ({ page, changePage, total }) => {
   };
 
   const { setSelectedMovie } = useContext(MovieContext);
+  if (numPages < 2 || !total) {
+    return null;
+  }
   return (
     <div>
       Pagination
