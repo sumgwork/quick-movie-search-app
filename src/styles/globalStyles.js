@@ -47,6 +47,9 @@ const GlobalStyles = createGlobalStyle`
     color: var(--primaryBg);
     }
   }
+  li {
+    list-style: none;
+  }
 
   /* Scrollbar Styles */
   body::-webkit-scrollbar {

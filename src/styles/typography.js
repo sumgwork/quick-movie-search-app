@@ -10,7 +10,7 @@ const Typography = createGlobalStyle`
       font-size: 1.5rem;
   }
   p, li {
-    letter-spacing: 0.5px;
+    /* letter-spacing: 0.5px; */
     font-weight: 400;
   }
   h1,h2,h3,h4,h5,h6 {

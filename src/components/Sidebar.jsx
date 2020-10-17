@@ -5,8 +5,8 @@ import PaginationComponent from "./Pagination";
 import SearchResults from "./SearchResults";
 
 const Sidebar = () => {
-  const [value, setValue] = useState("");
-  const [searchText, setSearchText] = useState("");
+  const [value, setValue] = useState("indian");
+  const [searchText, setSearchText] = useState("indian");
   const [page, setPage] = useState(1);
   const { searchResults: data, loading, error } = useSearchMovie(
     searchText.trim(),
@@ -15,6 +15,7 @@ const Sidebar = () => {
 
   const handleChange = (e) => {
     setValue(e.target.value);
+    setPage(1);
     debounceHandler(e.target.value);
   };
 
@@ -34,6 +35,11 @@ const Sidebar = () => {
         onChange={handleChange}
         placeholder="Start Search..."
       />
+      <PaginationComponent
+        page={page}
+        total={data.totalResults}
+        changePage={setPage}
+      />
 
       {loading && <div>Loading</div>}
       {!loading && error && (
@@ -46,14 +52,8 @@ const Sidebar = () => {
               {value && (
                 <div>
                   <SearchResults movies={data.Search} />
-                  <PaginationComponent
-                    page={page}
-                    total={data.totalResults}
-                    changePage={setPage}
-                  />
                 </div>
               )}
-              <div>{data.totalResults} Results found</div>
             </>
           )}
         </div>

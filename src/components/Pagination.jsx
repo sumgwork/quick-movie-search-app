@@ -6,15 +6,18 @@ const PaginationComponent = ({ page, changePage, total }) => {
 
   const handleToPrevPage = () => changePage(page - 1);
   const handleToNextPage = () => changePage(page + 1);
+
   return (
     <div>
       Pagination
       <button onClick={handleToPrevPage} disabled={page === 1}>
         -
       </button>
-      <div>
-        Page {page} of {numPages}
-      </div>
+      {total && (
+        <div>
+          Page {page} of {numPages}
+        </div>
+      )}
       <button onClick={handleToNextPage} disabled={page === numPages}>
         +
       </button>
