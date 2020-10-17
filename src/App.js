@@ -4,16 +4,19 @@ import Sidebar from "./components/Sidebar";
 import Homepage from "./pages/Homepage";
 import GlobalStyles from "./styles/globalStyles";
 import Typography from "./styles/typography";
+import { MovieProvider } from "./utils/movieContext";
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Typography />
-      <Homepage>
-        <Sidebar />
-        <MainContent />
-      </Homepage>
+      <MovieProvider>
+        <Homepage>
+          <Sidebar />
+          <MainContent />
+        </Homepage>
+      </MovieProvider>
     </>
   );
 }

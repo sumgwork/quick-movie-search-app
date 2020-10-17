@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import MovieContext from "../utils/movieContext";
 
 const PaginationComponent = ({ page, changePage, total }) => {
   const pageSize = 10;
   const numPages = Math.ceil(total / pageSize);
 
-  const handleToPrevPage = () => changePage(page - 1);
-  const handleToNextPage = () => changePage(page + 1);
+  const handleToPrevPage = () => {
+    changePage(page - 1);
+    setSelectedMovie(undefined);
+  };
+  const handleToNextPage = () => {
+    changePage(page + 1);
+    setSelectedMovie(undefined);
+  };
 
+  const { setSelectedMovie } = useContext(MovieContext);
   return (
     <div>
       Pagination

@@ -1,8 +1,9 @@
 import debounce from "lodash.debounce";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useContext } from "react";
 import useSearchMovie from "../hooks/useSearchMovie";
 import PaginationComponent from "./Pagination";
 import SearchResults from "./SearchResults";
+import MovieContext from "../utils/movieContext";
 
 const Sidebar = () => {
   const [value, setValue] = useState("indian");
@@ -13,10 +14,13 @@ const Sidebar = () => {
     page
   );
 
+  const { setSelectedMovie } = useContext(MovieContext);
+
   const handleChange = (e) => {
     setValue(e.target.value);
     setPage(1);
     debounceHandler(e.target.value);
+    setSelectedMovie(undefined);
   };
 
   const debounceHandler = useCallback(
