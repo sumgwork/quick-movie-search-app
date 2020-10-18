@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   ContentStyles,
-  Property,
   ImageWrapper,
+  Property,
 } from "../styles/content.styles";
+import { baseMovieApiUrl } from "../utils/baseUrl";
 import httpMovieService from "../utils/httpMovieService";
 import MovieContext from "../utils/movieContext";
 import DisplayError from "./DisplayError";
@@ -18,7 +19,7 @@ const MainContent = () => {
     const searchMovieDetails = async () => {
       try {
         const response = await httpMovieService.get(
-          `http://www.omdbapi.com/?i=${selectedMovie}`
+          `${baseMovieApiUrl}?i=${selectedMovie}`
         );
         const json = response.data;
         if (json.Error) {

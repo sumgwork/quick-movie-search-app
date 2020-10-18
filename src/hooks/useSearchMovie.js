@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { baseMovieApiUrl } from "../utils/baseUrl";
 import httpMovieService from "../utils/httpMovieService";
 
 const useSearchMovie = (searchText, page = 1) => {
@@ -18,7 +19,7 @@ const useSearchMovie = (searchText, page = 1) => {
         setLoading(true);
         setSearchResults([]);
         const response = await httpMovieService.get(
-          `http://www.omdbapi.com/?s=${searchText}&page=${page}`
+          `${baseMovieApiUrl}?s=${searchText}&page=${page}`
         );
         let json = response.data;
         if (json.errors) {
