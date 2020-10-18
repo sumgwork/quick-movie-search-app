@@ -3,12 +3,13 @@ import styled from "styled-components";
 
 export const MovieList = styled.ul`
   list-style: none;
+  margin-right: 1.5rem;
 `;
 
 export const MovieItem = styled.li`
   position: relative;
   margin: 1rem 0;
-  border: 1px solid black;
+  border: 1px solid var(--black);
   cursor: pointer;
   padding: 1rem;
   &[aria-selected="true"] {

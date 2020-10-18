@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContentStyles = styled.main`
   height: 100vh;
   overflow-y: auto;
-  border: 1px solid black;
+  border: 1px solid var(--black);
   border-left: none;
   padding: 2rem;
   display: flex;
@@ -27,7 +27,7 @@ export const ImageWrapper = styled.div`
   width: 600px;
   height: 400px;
   margin-left: 2rem;
-  /* border: 1px solid black; */
+  /* border: 1px solid var(--black); */
   overflow: none;
   img {
     object-fit: contain;

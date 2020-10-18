@@ -3,12 +3,13 @@ import React, { useCallback, useContext, useState } from "react";
 import useSearchMovie from "../hooks/useSearchMovie";
 import { SidebarStyles } from "../styles/sidebar.styles";
 import MovieContext from "../utils/movieContext";
+import DisplayError from "./DisplayError";
 import PaginationComponent from "./Pagination";
 import SearchResults from "./SearchResults";
 
 const Sidebar = () => {
-  const [value, setValue] = useState("happy");
-  const [searchText, setSearchText] = useState("happy");
+  const [value, setValue] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const { searchResults: data, loading, error } = useSearchMovie(
     searchText.trim(),
@@ -42,9 +43,10 @@ const Sidebar = () => {
           className="searchBox"
         />
 
-        {loading && <div>Loading</div>}
+        {loading && <div>Loading...</div>}
         {!loading && error && (
-          <div>Error loading movie, please try later. {error.message}</div>
+          <DisplayError error={error} />
+          // <div>Error loading movie, please try later. {error.message}</div>
         )}
         {!loading && !error && data && (
           <div

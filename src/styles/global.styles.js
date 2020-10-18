@@ -2,12 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --red: #FF4949;
     --black: #2E2E2E;
     --yellow: #ffc600;
     --white: #fff;
     --grey: #efefef;
-    --primaryBg: var(--red);
     --primaryFg: var(--black);
   }
   html, * {
@@ -25,17 +23,11 @@ const GlobalStyles = createGlobalStyle`
     max-width: 1200px;
     color: var(--primaryFg);
     margin: 0 auto;
-    max-height: none;
+    max-height: 100vh;
     padding: 1rem;
     min-height: 100vh;
   }
-  fieldset {
-    border-color: rgba(0,0,0,0.1);
-    border-width: 1px;
-  }
   button {
-    /* background: var(--primaryBg); */
-    /* color: var(--white); */
     font-weight: 700;
     font-size: 1.5rem;
     border: 0;
@@ -47,33 +39,6 @@ const GlobalStyles = createGlobalStyle`
       background: var(--white);
     color: var(--red);
     }
-  }
-
-  /* Scrollbar Styles */
-  body::-webkit-scrollbar {
-    width: 12px;
-  }
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--yellow) var(--white);
-  }
-  body::-webkit-scrollbar-track {
-    background: var(--white);
-  }
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--yellow) ;
-    border-radius: 6px;
-    border: 3px solid var(--white);
-  }
-  
-  /* Other Styles */
-  img {
-    max-width: 100%;
-  }
-  .tilt {
-    transform: rotate(-2deg);
-    position: relative;
-    display: inline-block;
   }
 `;
 

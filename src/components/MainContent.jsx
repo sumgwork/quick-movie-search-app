@@ -6,6 +6,7 @@ import {
 } from "../styles/content.styles";
 import httpMovieService from "../utils/httpMovieService";
 import MovieContext from "../utils/movieContext";
+import DisplayError from "./DisplayError";
 
 const MainContent = () => {
   const { selectedMovie } = useContext(MovieContext);
@@ -41,8 +42,12 @@ const MainContent = () => {
     <>
       {selectedMovie && (
         <div>
-          {loading && <div>Loading...</div>}
-          {!loading && error && <p>{error.message}</p>}
+          {loading && <div style={{ margin: "2rem" }}>Loading...</div>}
+          {!loading && error && (
+            <div style={{ margin: "2rem" }}>
+              <DisplayError error={error} />
+            </div>
+          )}
           {!loading && !error && movieDetails && (
             <ContentStyles>
               <div>
