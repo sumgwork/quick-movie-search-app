@@ -28,7 +28,7 @@ const Sidebar = () => {
   const debounceHandler = useCallback(
     debounce((value) => {
       setSearchText(value);
-    }, 250),
+    }, 400),
     []
   );
 
