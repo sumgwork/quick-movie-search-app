@@ -27,7 +27,6 @@ export const ImageWrapper = styled.div`
   width: 600px;
   height: 400px;
   margin-left: 2rem;
-  /* border: 1px solid var(--black); */
   overflow: none;
   img {
     object-fit: contain;

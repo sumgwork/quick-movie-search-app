@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useContext } from "react";
 import { MovieItem, MovieList, StarIcon } from "../styles/searchResults.styles";
 import MovieContext from "../utils/movieContext";
@@ -23,6 +24,14 @@ const SearchResults = ({ movies }) => {
       })}
     </MovieList>
   );
+};
+
+SearchResults.propTypes = {
+  movies: PropTypes.array,
+};
+
+SearchResults.defaultProps = {
+  movies: [],
 };
 
 export default SearchResults;

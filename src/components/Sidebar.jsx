@@ -8,23 +8,30 @@ import PaginationComponent from "./Pagination";
 import SearchResults from "./SearchResults";
 
 const Sidebar = () => {
+  // state management
   const [value, setValue] = useState("");
   const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
+
+  // using custom hook to obtain search results
   const { searchResults: data, loading, error } = useSearchMovie(
     searchText.trim(),
     page
   );
 
+  // read from movie context
   const { setSelectedMovie } = useContext(MovieContext);
 
+  // event handler for user input
   const handleChange = (e) => {
     setValue(e.target.value);
     setPage(1);
+    // debounce the input to avoid multiple queries as user types
     debounceHandler(e.target.value);
     setSelectedMovie(undefined);
   };
 
+  // debounce handler used for bouncing off api calls while the user is still typing
   const debounceHandler = useCallback(
     debounce((value) => {
       setSearchText(value);
@@ -44,15 +51,9 @@ const Sidebar = () => {
         />
 
         {loading && <div>Loading...</div>}
-        {!loading && error && (
-          <DisplayError error={error} />
-          // <div>Error loading movie, please try later. {error.message}</div>
-        )}
+        {!loading && error && <DisplayError error={error} />}
         {!loading && !error && data && (
-          <div
-            className="resultPane"
-            // style={{ background: "red", overflow: "auto" }}
-          >
+          <div className="resultPane">
             {data.Response === "True" && value && (
               <SearchResults movies={data.Search} />
             )}
@@ -61,7 +62,7 @@ const Sidebar = () => {
       </div>
       <PaginationComponent
         page={page}
-        total={data.totalResults}
+        total={parseInt(data.totalResults)}
         changePage={setPage}
       />
     </SidebarStyles>

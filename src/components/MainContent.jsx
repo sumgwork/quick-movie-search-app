@@ -9,12 +9,24 @@ import httpMovieService from "../utils/httpMovieService";
 import MovieContext from "../utils/movieContext";
 import DisplayError from "./DisplayError";
 
+const showProperty = (title, description) => {
+  return (
+    <Property>
+      <span className="title">{title}:</span> {description}
+    </Property>
+  );
+};
+
 const MainContent = () => {
+  // reading from movie context
   const { selectedMovie } = useContext(MovieContext);
+
+  // state management for the component
   const [movieDetails, setMovieDetails] = useState({});
   const [error, setError] = useState(undefined);
   const [loading, setLoading] = useState(false);
 
+  // api call every time selected movie is modified
   useEffect(() => {
     const searchMovieDetails = async () => {
       try {
@@ -22,6 +34,7 @@ const MainContent = () => {
           `${baseMovieApiUrl}?i=${selectedMovie}`
         );
         const json = response.data;
+        // error handling
         if (json.Error) {
           throw new Error(json.Error);
         }
@@ -33,9 +46,11 @@ const MainContent = () => {
       }
     };
     if (!!selectedMovie) {
+      //reset state
       setLoading(true);
       setMovieDetails({});
       setError(undefined);
+
       searchMovieDetails();
     }
   }, [selectedMovie]);
@@ -72,11 +87,3 @@ const MainContent = () => {
 };
 
 export default MainContent;
-
-function showProperty(title, description) {
-  return (
-    <Property>
-      <span className="title">{title}:</span> {description}
-    </Property>
-  );
-}
