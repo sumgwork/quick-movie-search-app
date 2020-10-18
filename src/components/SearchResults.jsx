@@ -12,7 +12,7 @@ const SearchResults = ({ movies }) => {
         return (
           <MovieItem
             key={movie.imdbID}
-            onClick={() => setSelectedMovie(movie)}
+            onClick={() => setSelectedMovie(movie.imdbID)}
             aria-selected={isSelected}
           >
             <h3>{movie.Title}</h3>

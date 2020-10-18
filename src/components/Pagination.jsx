@@ -27,9 +27,7 @@ const PaginationComponent = ({ page, changePage, total }) => {
       </button>
       {total && (
         <div>
-          <div>
-            Page {page} of {numPages}
-          </div>
+          <div>Page {page}</div>
           <div>{total} Results</div>
         </div>
       )}
