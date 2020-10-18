@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import { PaginationStyles } from "../styles/pagination.styles";
 import MovieContext from "../utils/movieContext";
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 const PaginationComponent = ({ page, changePage, total }) => {
   const pageSize = 10;
@@ -19,20 +21,22 @@ const PaginationComponent = ({ page, changePage, total }) => {
     return null;
   }
   return (
-    <div>
-      Pagination
+    <PaginationStyles>
       <button onClick={handleToPrevPage} disabled={page === 1}>
-        -
+        <BiLeftArrow />
       </button>
       {total && (
         <div>
-          Page {page} of {numPages}
+          <div>
+            Page {page} of {numPages}
+          </div>
+          <div>{total} Results</div>
         </div>
       )}
       <button onClick={handleToNextPage} disabled={page === numPages}>
-        +
+        <BiRightArrow />
       </button>
-    </div>
+    </PaginationStyles>
   );
 };
 

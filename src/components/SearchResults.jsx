@@ -1,16 +1,27 @@
 import React, { useContext } from "react";
+import { MovieItem, MovieList, StarIcon } from "../styles/searchResults.styles";
 import MovieContext from "../utils/movieContext";
 
 const SearchResults = ({ movies }) => {
-  const { setSelectedMovie } = useContext(MovieContext);
+  const { selectedMovie, setSelectedMovie } = useContext(MovieContext);
   return (
-    <ul>
-      {movies.map((movie) => (
-        <li key={movie.imdbID} onClick={() => setSelectedMovie(movie)}>
-          {movie.Title}
-        </li>
-      ))}
-    </ul>
+    <MovieList>
+      {movies.map((movie) => {
+        const isSelected =
+          selectedMovie && movie.imdbID === selectedMovie.imdbID;
+        return (
+          <MovieItem
+            key={movie.imdbID}
+            onClick={() => setSelectedMovie(movie)}
+            aria-selected={isSelected}
+          >
+            <h3>{movie.Title}</h3>
+            {isSelected && <StarIcon />}
+            <sub>{movie.Year}</sub>
+          </MovieItem>
+        );
+      })}
+    </MovieList>
   );
 };
 

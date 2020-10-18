@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    outline: none;
   }
   html {
     font-size: 10px;
@@ -33,8 +34,8 @@ const GlobalStyles = createGlobalStyle`
     border-width: 1px;
   }
   button {
-    background: var(--primaryBg);
-    color: var(--white);
+    /* background: var(--primaryBg); */
+    /* color: var(--white); */
     font-weight: 700;
     font-size: 1.5rem;
     border: 0;
@@ -43,12 +44,9 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
-      background: var(--black);
-    color: var(--primaryBg);
+      background: var(--white);
+    color: var(--red);
     }
-  }
-  li {
-    list-style: none;
   }
 
   /* Scrollbar Styles */
@@ -57,13 +55,13 @@ const GlobalStyles = createGlobalStyle`
   }
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--red) var(--white);
+    scrollbar-color: var(--yellow) var(--white);
   }
   body::-webkit-scrollbar-track {
     background: var(--white);
   }
   body::-webkit-scrollbar-thumb {
-    background-color: var(--red) ;
+    background-color: var(--yellow) ;
     border-radius: 6px;
     border: 3px solid var(--white);
   }

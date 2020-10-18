@@ -1,5 +1,5 @@
 import React from "react";
-import { HomepageStyles } from "../styles/homepageStyles";
+import { HomepageStyles } from "../styles/homepage.styles";
 
 const Homepage = ({ children }) => {
   return <HomepageStyles>{children}</HomepageStyles>;
