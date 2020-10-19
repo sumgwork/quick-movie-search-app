@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ContentStyles = styled.main`
   height: 100vh;
-  max-height: var(--maxContentHeight);
   overflow-y: auto;
   border: 1px solid var(--black);
   border-left: none;

@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
     --white: #fff;
     --grey: #efefef;
     --primaryFg: var(--black);
-    --maxContentHeight: 1000px;
   }
   html, * {
     padding: 0;
