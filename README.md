@@ -1,70 +1,83 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# The Movie Search Test, aka Cruise Strikes Back
 
-## Available Scripts
+## SCROLL DOWN FOR SOLUTION NOTES
 
-In the project directory, you can run:
+## The Scenario
 
-### `yarn start`
+You’ve been tasked with creating a single page application, using a frontend technology of your choice, which can list and filter movies provided by a third party API.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Tech details
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Your application should consume the free OMDB API – ​https://www.omdbapi.com/
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Solution
 
-### `yarn build`
+## Simulation
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Before going through the steps below, it can be handy to have a look at the app [here](https://movie-search-sumit.netlify.app/).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the repo from the Github URL, and perform an install using `npm install` or `yarn install` commands to download the dependencies.
 
-### `yarn eject`
+Before trying to run the application though, it is important to setup the environment. The required parameter here is OMDB API key. Create a file called `.env` at the root of the project and copy the following line after replacing your API key.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+REACT_APP_OMDB_KEY=<your_api_key>
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To execute the application on local environment, please issue `npm start` or `yarn start` commands.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Browser Support
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Application has been tested to be working fine on latest versions of
 
-## Learn More
+- Google Chrome
+- Mozilla Firefox
+- Apple Safari
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+browsers on **Desktop** only mode. The application hasn't been modified to run as intended on a mobile device though and should be viewed only on a Desktop machine.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tech Stack
 
-### Code Splitting
+### Scaffolding
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+This project has been bootstraped with create-react-app cli.
 
-### Analyzing the Bundle Size
+### Main Libraries
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+1. **React**: Library of choice.
+2. **Axios**: For making API calls. Reason for including Axios was to include an interceptor which injects api key into every api call, and also for some generic error handling.
+3. **Styled Components**: For theming and styling.
 
-### Making a Progressive Web App
+### Helper Libraries
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+lodash.debounce (for inducing delay between subsequent API calls)
 
-### Advanced Configuration
+react-icons (for pagination icons)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Highlights
 
-### Deployment
+> Only functional components, no class based approach.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+> Custom React Hook used for fetching Search API data.
 
-### `yarn build` fails to minify
+> Debouncing API calls to let the user complete typing the input. Saves bandwidth and provides better user experience.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+> CSS in JS approach. Used CSS global variables for theming.
 
-<!-- set context for search text and selected movie -->
+> Simple CI/CD implemented using GitHub and Netlify.
+
+## What's not been covered / What can be improved
+
+Since the scope of project wasn't too elaborated, have tried to cover basic stuff while being cautious of time.
+
+- Test coverage for the application is yet to be done.
+
+- Have done only basic styling. The app hasn't been made responsive yet to work on smaller screens. One reason for this was also the lack of mobile wireframes in the brief.
+
+- Server side rendering of the webpages not considered for this demo.
+
+- Containerising the app at this stage would only have been an overkill.

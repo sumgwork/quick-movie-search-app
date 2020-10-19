@@ -5,6 +5,7 @@ export const SidebarStyles = styled.aside`
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  max-height: var(--maxContentHeight);
   border: 1px solid var(--black);
   padding: 0.5rem 1rem;
   overflow: auto;
